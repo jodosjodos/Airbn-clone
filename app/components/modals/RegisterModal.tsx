@@ -11,7 +11,7 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../Input";
 import Button from "../Button";
-import { POST } from "@/app/api/register/route";
+import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {
   const registerlModal = useRegisterModal();
@@ -40,7 +40,7 @@ const RegisterModal = () => {
       .then(() => {
         registerlModal.onClose();
       })
-      .catch((err) => {
+      .catch((err) =>  {
         console.log(err);
 
         toast.error("Somehing went wrong ");
@@ -92,7 +92,7 @@ const RegisterModal = () => {
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={()=>{signIn('github')}}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div>
